@@ -32,6 +32,9 @@ class ChatWindow extends React.Component {
                 socket.emit('username', this.state.user.username);
             });
         }).catch((err) => {
+            this.setState({
+                user: {username: ""}
+            })
             alert(err.response.data);
         })
     }
