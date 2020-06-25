@@ -8,7 +8,7 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            user : {},
+            // user : {},
             isLoggedIn : false
         }
         console.log("Login constructor called");
@@ -30,25 +30,20 @@ class Login extends React.Component {
             withCredentials: true
         }).then((response) => {
             this.setState({
-                user : response.data.user,
+                // user : response.data.user,
                 isLoggedIn : true
             })
-            var token = response.data.token;
-            localStorage.setItem('token', token);
+            // var token = response.data.token;
+            // localStorage.setItem('token', token);
         }).catch((err) => {
-            console.log(err.response.data);
+            alert(err.response.data);
         })
         e.preventDefault();
     }
 
     render() {
         return this.state.isLoggedIn ? (
-            <Redirect to={{
-                pathname: "/",
-                state: {
-                    user: this.state.user
-                }
-            }} />
+            <Redirect to="/"/>
         ) : (
             <div>
                 <form onSubmit={this.handleOnSubmit}>
